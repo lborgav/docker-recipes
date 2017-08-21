@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+    networks:
+      - intranet
+  
+  nexus:
+    build: ./nexus
+    container_name: nexus
+    volumes:
+      - "~/nexus:/nexus-data"
+    networks:
+      - intranet
+
+networks:
+  intranet:
